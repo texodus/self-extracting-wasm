@@ -11,7 +11,11 @@
 
 export async function extract(input) {
     let bin;
-    if (typeof input?.then === "function" || input instanceof Response) {
+    if (typeof input?.then === "function") {
+        input = await input;
+    }
+
+    if (input instanceof Response) {
         bin = await WebAssembly.instantiateStreaming(input);
     } else if (typeof input === "string") {
         bin = await WebAssembly.instantiateStreaming(fetch(input));
@@ -19,6 +23,8 @@ export async function extract(input) {
         bin = await WebAssembly.instantiate(input);
     } else if (input instanceof Uint8Array) {
         bin = await WebAssembly.instantiate(input.buffer);
+    } else {
+        bin = input;
     }
 
     const inst = bin.instance.exports;
