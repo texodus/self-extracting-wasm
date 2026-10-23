@@ -1,9 +1,13 @@
 import "zx/globals";
 
-await $`cargo build \
+await $({
+  env: {
+    ...process.env,
+    RUSTFLAGS: "-Zunstable-options -Cpanic=immediate-abort",
+  },
+})`cargo build \
     --color always \
     --release \
-    -Z build-std-features=panic_immediate_abort \
     -Z build-std=std,panic_abort \
     --lib \
     --target wasm32-unknown-unknown \

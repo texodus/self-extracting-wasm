@@ -1,6 +1,5 @@
-cargo build \
+RUSTFLAGS="-Zunstable-options -Cpanic=immediate-abort" cargo build \
     --release \
-    -Z build-std-features=panic_immediate_abort \
     -Z build-std=std,panic_abort \
     --lib \
     --target wasm32-unknown-unknown \

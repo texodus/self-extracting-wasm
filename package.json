@@ -29,13 +29,13 @@
         }
     },
     "dependencies": {
-        "http-server": "^14.1.1",
-        "leb128": "^0.0.5",
-        "zx": "^8.6.1"
+        "leb128": "^0.0.5"
     },
     "devDependencies": {
         "@playwright/test": "^1.53.2",
-        "@types/node": "^24.0.10"
+        "@types/node": "^24.0.10",
+        "http-server": "^14.1.1",
+        "zx": "^8.6.1"
     },
     "scripts": {
         "build": "node build.mjs",
