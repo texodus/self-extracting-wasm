@@ -1,6 +1,6 @@
 {
     "name": "pro_self_extracting_wasm",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "description": "",
     "main": "compress.mjs",
     "author": "",
