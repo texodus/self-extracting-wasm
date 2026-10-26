@@ -36,3 +36,12 @@ export async function extract(input) {
     const offset = inst.compile(payload.byteLength, raw_length);
     return new Uint8Array(inst.memory.buffer).slice(offset, raw_length + offset);
 }
+
+export function read_section(module, name) {
+    const [section] = WebAssembly.Module.customSections(module.module ?? module, name);
+    if (section === undefined) {
+        return undefined;
+    }
+
+    return JSON.parse(new TextDecoder().decode(section));
+}
